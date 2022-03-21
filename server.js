@@ -9,6 +9,8 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 // parse incoming JSON data
 app.use(express.json());
+// use css and js files in /public
+app.use(express.static('public'));
 
 const PORT = process.env.PORT || 3001;
 
@@ -44,10 +46,12 @@ function validateNote(note) {
     return true;
 };
 
+// get all notes in the database
 app.get('/api/notes', (req, res) => {
     res.json(notes);
 });
 
+// get a specific id, may be useful for displaying notes and deleting notes
 app.get('/api/notes/:id', (req, res) => {
     const result = findById(req.params.id, notes);
     
@@ -58,6 +62,7 @@ app.get('/api/notes/:id', (req, res) => {
     }
 });
 
+// add a new note to the database
 app.post('/api/notes', (req, res) => {
     // generate new id for the note
     req.body.id = Math.floor(Math.random() * 1000000).toString();
@@ -69,6 +74,16 @@ app.post('/api/notes', (req, res) => {
         const note = createNewNote(req.body, notes);
         res.json(note);
     }
+});
+
+// serve landing page
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/index.html'));
+});
+
+// serve notes.html
+app.get('/notes', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/notes.html'));
 });
 
 app.listen(PORT, () => {
