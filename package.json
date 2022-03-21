@@ -1,0 +1,22 @@
+{
+  "name": "note-taker",
+  "version": "1.0.0",
+  "description": "A note-taking app using an Express.js backend.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JaxonAdams/note-taker.git"
+  },
+  "author": "Jaxon Adams",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JaxonAdams/note-taker/issues"
+  },
+  "homepage": "https://github.com/JaxonAdams/note-taker#readme",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}
