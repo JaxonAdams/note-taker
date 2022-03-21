@@ -1,10 +1,14 @@
 {
-    "notes": [
-        
-        {
-            "title":"Test Title",
-            "text":"Test text",
-            "id": "0"
-        }
-    ]
+  "notes": [
+    {
+      "title": "Test Title",
+      "text": "Test text",
+      "id": "0"
+    },
+    {
+      "title": "Hello Note Taker",
+      "text": "Hello from Note Taker's server!",
+      "id": "131628"
+    }
+  ]
 }
