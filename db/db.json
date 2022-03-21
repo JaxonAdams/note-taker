@@ -1,19 +1,9 @@
 {
   "notes": [
     {
-      "title": "Test Title",
-      "text": "Test text",
-      "id": "0"
-    },
-    {
-      "title": "Hello Note Taker",
-      "text": "Hello from Note Taker's server!",
-      "id": "131628"
-    },
-    {
-      "title": "New Note",
-      "text": "This is a new note written from the app.",
-      "id": "972737"
+      "title": "Hello",
+      "text": "Writing a new note now",
+      "id": 985894
     }
   ]
 }

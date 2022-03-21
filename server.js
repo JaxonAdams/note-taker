@@ -46,6 +46,13 @@ function validateNote(note) {
     return true;
 };
 
+function deleteNote(id, notesArr) {
+    fs.readFile(path.join(__dirname, './db/db.json'), (err, data) => {
+        newArr = data.filter(dataNote => dataNote.id != id);
+        return newArr;
+    });
+};
+
 // get all notes in the database
 app.get('/api/notes', (req, res) => {
     res.json(notes);
@@ -62,10 +69,18 @@ app.get('/api/notes/:id', (req, res) => {
     }
 });
 
+// delete a note from the database
+app.delete('/api/notes/:id', (req, res) => {
+    // delete note
+    const result = deleteNote(req.params.id, notes);
+
+    res.json(result);
+});
+
 // add a new note to the database
 app.post('/api/notes', (req, res) => {
     // generate new id for the note
-    req.body.id = Math.floor(Math.random() * 1000000).toString();
+    req.body.id = Number(Math.floor(Math.random() * 1000000).toString());
 
     // if any data posted is incorrect, send error
     if (!validateNote(req.body)) {
