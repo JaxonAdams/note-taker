@@ -1,9 +1,14 @@
 {
   "notes": [
     {
-      "title": "Hello",
-      "text": "Writing a new note now",
-      "id": 985894
+      "title": "New Note",
+      "text": "This is something to delete",
+      "id": 631255
+    },
+    {
+      "title": "Another new note",
+      "text": "Delete me",
+      "id": 968577
     }
   ]
 }

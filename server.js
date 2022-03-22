@@ -46,13 +46,6 @@ function validateNote(note) {
     return true;
 };
 
-function deleteNote(id, notesArr) {
-    fs.readFile(path.join(__dirname, './db/db.json'), (err, data) => {
-        newArr = data.filter(dataNote => dataNote.id != id);
-        return newArr;
-    });
-};
-
 // get all notes in the database
 app.get('/api/notes', (req, res) => {
     res.json(notes);
@@ -71,10 +64,12 @@ app.get('/api/notes/:id', (req, res) => {
 
 // delete a note from the database
 app.delete('/api/notes/:id', (req, res) => {
-    // delete note
-    const result = deleteNote(req.params.id, notes);
+    // read db.json and pull out all notes except the one with the specified id
+    const newNotes = notes.filter(note => note.id != req.params.id);
 
-    res.json(result);
+    fs.writeFileSync(path.join(__dirname, './db/db.json'), JSON.stringify({ notes: newNotes }, null, 2));
+    
+    res.json(newNotes);
 });
 
 // add a new note to the database
